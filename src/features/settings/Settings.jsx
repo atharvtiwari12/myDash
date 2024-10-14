@@ -79,7 +79,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       {message && <p className="text-green-500 text-center mb-4">{message}</p>}
       <form onSubmit={handleUpdateProfile} className="space-y-4">
         <div>
@@ -150,18 +150,16 @@ const Settings = () => {
         </div>
         <button
           type="submit"
-          className="w-full inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          className="w-full sm:w-auto inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
           Update Profile
         </button>
       </form>
 
       <div className="mt-6">
-        <h3 className="text-lg font-semibold">Account Management</h3>
-        <p className="text-sm text-gray-600">Manage your account settings.</p>
         <button
           onClick={handleLogout}
-          className="mt-2 w-full inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          className="mt-2 w-full sm:w-auto inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
         >
           Logout
         </button>
