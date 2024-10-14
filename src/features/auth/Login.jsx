@@ -91,12 +91,12 @@ const Login = () => {
               />
             </div>
             <div className="flex items-center justify-between">
-              <a
-                href="/forgot-password"
-                className="text-sm text-blue-600 hover:underline"
+              <Link
+                to="/forgot-password"
+                className="text-blue-600 hover:underline"
               >
                 Forgot Password?
-              </a>
+              </Link>
             </div>
             <button
               type="submit"
@@ -107,9 +107,9 @@ const Login = () => {
 
             <p className="text-sm text-center">
               Don't have an account?{" "}
-              <a href="/signup" className="text-blue-600 hover:underline">
+              <Link to="/signup" className="text-blue-600 hover:underline">
                 Sign Up
-              </a>
+              </Link>
             </p>
           </Form>
         </Formik>

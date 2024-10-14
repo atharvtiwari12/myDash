@@ -162,9 +162,9 @@ const Signup = () => {
         </Formik>
         <p className="text-sm text-center">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-blue-600 hover:underline">
             Login
-          </a>
+          </Link>
         </p>
       </div>
     </motion.div>
