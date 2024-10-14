@@ -11,9 +11,8 @@ const Settings = () => {
   const db = getFirestore();
   const [username, setUsername] = useState(user.displayName || "");
   const [email, setEmail] = useState(user.email || "");
-  const [bio, setBio] = useState("");
-  const [interests, setInterests] = useState("");
-  const [password, setPassword] = useState("");
+  const [dietaryPreferences, setDietaryPreferences] = useState("");
+  const [favoriteItems, setFavoriteItems] = useState("");
   const [message, setMessage] = useState("");
   const [photoFile, setPhotoFile] = useState(null);
   const [photoURL, setPhotoURL] = useState(user.photoURL || "");
@@ -24,8 +23,8 @@ const Settings = () => {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         const userData = docSnap.data();
-        setBio(userData.bio || "");
-        setInterests(userData.interests || "");
+        setDietaryPreferences(userData.dietaryPreferences || "");
+        setFavoriteItems(userData.favoriteItems || "");
       } else {
         console.log("No such document!");
       }
@@ -51,7 +50,11 @@ const Settings = () => {
       }
 
       const userDocRef = doc(db, "users", user.uid);
-      await setDoc(userDocRef, { bio, interests }, { merge: true });
+      await setDoc(
+        userDocRef,
+        { dietaryPreferences, favoriteItems },
+        { merge: true }
+      );
 
       setMessage("Profile updated successfully!");
     } catch (error) {
@@ -75,10 +78,6 @@ const Settings = () => {
     }
   };
 
-  const handlePasswordChange = async () => {
-    alert("Password change functionality is not implemented.");
-  };
-
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
       {message && <p className="text-green-500 text-center mb-4">{message}</p>}
@@ -91,7 +90,7 @@ const Settings = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
             required
           />
         </div>
@@ -103,30 +102,32 @@ const Settings = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
             required
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Bio</label>
-          <textarea
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
-            rows="3"
-            placeholder="Tell us about yourself..."
+          <label className="block text-sm font-medium text-gray-700">
+            Dietary Preferences
+          </label>
+          <input
+            type="text"
+            value={dietaryPreferences}
+            onChange={(e) => setDietaryPreferences(e.target.value)}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
+            placeholder="E.g., Vegan, Gluten-Free"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Interests
+            Favorite Grocery Items
           </label>
           <input
             type="text"
-            value={interests}
-            onChange={(e) => setInterests(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
-            placeholder="Your interests (comma separated)"
+            value={favoriteItems}
+            onChange={(e) => setFavoriteItems(e.target.value)}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
+            placeholder="Your favorite items (comma separated)"
           />
         </div>
         <div>
@@ -137,7 +138,7 @@ const Settings = () => {
             type="file"
             accept="image/*"
             onChange={handlePhotoChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
           />
           {photoURL && (
             <img
@@ -149,7 +150,7 @@ const Settings = () => {
         </div>
         <button
           type="submit"
-          className="w-full inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="w-full inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
           Update Profile
         </button>

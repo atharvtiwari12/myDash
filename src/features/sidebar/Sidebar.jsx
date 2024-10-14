@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return (
     <div className="w-64  bg-white shadow-lg">
-      <h2 className="text-xl font-bold p-4">MyDashboard</h2>
+      <h2 className="text-xl font-bold p-4">Grocery Mart</h2>
       <ul className="flex flex-col p-4">
         <li className="my-2">
           <Link
