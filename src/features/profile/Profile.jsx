@@ -10,6 +10,7 @@ const Profile = () => {
   const user = auth.currentUser;
 
   const [favoriteItems, setFavoriteItems] = useState([]);
+  const [dietaryPreferences, setDietaryPreferences] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,7 +22,35 @@ const Profile = () => {
 
           if (userSnapshot.exists()) {
             const userData = userSnapshot.data();
-            setFavoriteItems(userData.favoriteItems || []);
+
+            // Handle favorite items
+            if (typeof userData.favoriteItems === "string") {
+              setFavoriteItems(
+                userData.favoriteItems.split(",").map((item) => item.trim())
+              );
+            } else {
+              setFavoriteItems(
+                Array.isArray(userData.favoriteItems)
+                  ? userData.favoriteItems
+                  : []
+              );
+            }
+
+            if (typeof userData.dietaryPreferences === "string") {
+              setDietaryPreferences(
+                userData.dietaryPreferences
+                  .split(",")
+                  .map((pref) => pref.trim())
+              );
+            } else {
+              setDietaryPreferences(
+                Array.isArray(userData.dietaryPreferences)
+                  ? userData.dietaryPreferences
+                  : []
+              );
+            }
+          } else {
+            console.log("No user data found!");
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
@@ -76,10 +105,16 @@ const Profile = () => {
         )}
       </div>
       <div className="mb-4">
-        <h3 className="text-lg font-semibold mb-1">Shopping Preferences</h3>
-        <p className="text-sm text-gray-600">
-          Customize your shopping experience by adding preferences.
-        </p>
+        <h3 className="text-lg font-semibold mb-1">Dietary Preferences</h3>
+        {dietaryPreferences.length > 0 ? (
+          <ul className="list-disc list-inside text-sm text-gray-600">
+            {dietaryPreferences.map((pref, index) => (
+              <li key={index}>{pref}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-600">No dietary preferences added yet.</p>
+        )}
       </div>
     </div>
   );
