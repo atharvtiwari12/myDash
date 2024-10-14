@@ -9,6 +9,7 @@ import Signup from "../features/auth/Signup";
 import { useAuth } from "../context/AuthContext";
 import LandingPage from "../landingPage/LandingPage";
 import AboutPage from "../features/about/About";
+import ForgotPassword from "../features/auth/ForgotPassword";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
@@ -34,6 +35,7 @@ const AppRoutes = () => {
         path="/signup"
         element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />}
       />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
     </Routes>
   );
 };
