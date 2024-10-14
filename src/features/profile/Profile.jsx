@@ -3,6 +3,7 @@ import { auth } from "../../firebase.config";
 import { useAuth } from "../../context/AuthContext";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase.config";
+import userPlaceholder from "../../assets/user.png";
 
 const Profile = () => {
   const { isAuthenticated } = useAuth();
@@ -34,16 +35,20 @@ const Profile = () => {
   }, [user]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <div className="flex items-center justify-center mb-6">
         <img
-          src={user.photoURL || "https://via.placeholder.com/100"}
+          src={user.photoURL || userPlaceholder}
           alt="Profile"
-          className="w-24 h-24 rounded-full border-2 border-green-500 shadow-md"
+          className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full border-2 border-green-500 shadow-md"
         />
       </div>
       <div className="mb-4">

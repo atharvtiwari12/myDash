@@ -1,14 +1,12 @@
-// src/pages/Home.js
 import React from "react";
 import { Link } from "react-router-dom";
-import { items } from "../../data/itemData"; // Import item data
-import { products } from "../../data/productData"; // Import product data
+import { items } from "../../data/itemData";
+import { products } from "../../data/productData";
 
 const Home = () => {
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg p-8">
-        {/* Featured Items Section */}
+    <div className="bg-gray-100 min-h-screen overflow-x-hidden">
+      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg p-8 w-full">
         <h3 className="text-2xl font-semibold mb-4">Featured Items</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((item) => (
@@ -34,7 +32,6 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Featured Products Section */}
         <h3 className="text-2xl font-semibold mb-4 mt-8">Featured Products</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
@@ -62,7 +59,6 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
         <div className="mt-8 text-center">
           <Link to="/products">
             <button className="inline-flex justify-center px-6 py-3 text-lg font-medium text-white bg-green-600 border border-transparent rounded-md shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">

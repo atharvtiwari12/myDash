@@ -1,4 +1,3 @@
-// src/data/productData.js
 import avocado from "../assets/avocado.jpg"
 import bread from "../assets/bread.jpg"
 import milk from "../assets/milk.jpg"
@@ -29,5 +28,4 @@ export const products = [
     image: yogurt,
     price: 1.50,
   },
-  // Add more products as needed
 ];

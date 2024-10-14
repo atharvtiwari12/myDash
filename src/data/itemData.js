@@ -1,4 +1,3 @@
-// src/data/itemData.js
 import tomato from "../assets/tomato.jpg";
 import lettuce from "../assets/lettuce.jpg"
 import cheese from "../assets/cheese.jpg"
@@ -22,5 +21,4 @@ export const items = [
     image: cheese,
     price: 3.00,
   },
-  // Add more items as needed
 ];
