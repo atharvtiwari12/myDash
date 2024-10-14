@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import AuthContext from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState("");

@@ -5,6 +5,7 @@ import { auth } from "../../firebase.config";
 import { sendPasswordResetEmail } from "firebase/auth";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [message, setMessage] = useState("");

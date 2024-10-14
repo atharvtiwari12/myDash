@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { doc, setDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [message, setMessage] = useState("");
